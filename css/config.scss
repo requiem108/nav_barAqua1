@@ -1,0 +1,37 @@
+$primarioC:#424242;
+$navText:#ffff;
+$tituloColor:#828282;
+$fuenteTitulo:'Oswald', sans-serif;
+$fuenteTexto: 'Montserrat', sans-serif;
+
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+@mixin flex($posicionA,$posicionB,$direccion) {
+
+    display: flex;
+    justify-content: $posicionA;
+    align-items: $posicionB;
+    flex-direction: $direccion;    
+}
+
+
+//Medidas resposivas
+@mixin media-md {
+    @media screen and (max-width:768px) {
+        @content;
+    }    
+}
+@mixin media-lg {
+    @media screen and (max-width:1024px) {
+        @content;
+    }    
+}
+@mixin media-xl {
+    @media screen and (max-width:1600px) {
+        @content;
+    }    
+}

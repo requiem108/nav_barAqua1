@@ -1,0 +1,60 @@
+@import 'config';
+
+
+
+
+
+@include media-md{
+    .nav{
+        background: $primarioC;
+        position: fixed;
+        right: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        right:2rem;
+        top: 1rem;
+        @include flex(center,center,column);
+        cursor: pointer;
+    
+        .toggleBoton{
+            color:$navText;
+            position: absolute;
+            
+        }
+        
+        &_items{
+            @include flex(center,flex-end,column);
+            list-style: none;
+            
+            &_item{
+                color:$navText;
+                margin: 0 1rem;
+                font-family: $fuenteTitulo;
+                font-size: 1rem;
+            }
+    
+            .subItems{
+                display: none;
+            }
+    
+        }
+    }
+    
+    .itemArticulo{
+        widows: 100vw;
+        height: 100vw;
+        position: absolute;
+
+        h2{            
+            font-size: 2rem;
+            color: $tituloColor;
+        }
+    }
+}
+
+
+
+.off{
+    display: none;
+}

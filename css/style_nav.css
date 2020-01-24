@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .nav {
+    background: #424242;
+    position: fixed;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    right: 2rem;
+    top: 1rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    cursor: pointer;
+  }
+  .nav .toggleBoton {
+    color: #ffff;
+    position: absolute;
+  }
+  .nav_items {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    list-style: none;
+  }
+  .nav_items_item {
+    color: #ffff;
+    margin: 0 1rem;
+    font-family: "Oswald", sans-serif;
+    font-size: 1rem;
+  }
+  .nav_items .subItems {
+    display: none;
+  }
+  .itemArticulo {
+    widows: 100vw;
+    height: 100vw;
+    position: absolute;
+  }
+  .itemArticulo h2 {
+    font-size: 2rem;
+    color: #828282;
+  }
+}
+
+.off {
+  display: none;
+}
+/*# sourceMappingURL=style_nav.css.map */
