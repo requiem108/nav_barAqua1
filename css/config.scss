@@ -3,10 +3,14 @@ $navText:#ffff;
 $tituloColor:#828282;
 $fuenteTitulo:'Oswald', sans-serif;
 $fuenteTexto: 'Montserrat', sans-serif;
+$opciones: 5;
+$altoOpc:  90;
+$disOpc:$opciones/2 * $altoOpc;
 
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     
 }
 

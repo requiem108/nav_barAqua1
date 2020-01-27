@@ -1,25 +1,32 @@
 @import 'config';
-
+@import 'contenido';
 
 
 
 
 @include media-md{
     .nav{
-        background: $primarioC;
-        position: fixed;
-        right: 0;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        right:2rem;
-        top: 1rem;
+        height: 100vh;
+        width: 100vw;
+        overflow-y: hidden;
+        z-index: 2;
+        position: absolute;
         @include flex(center,center,column);
-        cursor: pointer;
     
         .toggleBoton{
             color:$navText;
             position: absolute;
+            background: $primarioC;
+            position: fixed;
+            right: 0;
+            width: 100px;
+            height: 50px;
+            border-radius: 50%;
+            right:2rem;
+            top: 1rem;
+            @include flex(center,center,column);
+            cursor: pointer;
+            z-index: 100;
             
         }
         
@@ -28,31 +35,141 @@
             list-style: none;
             
             &_item{
-                color:$navText;
-                margin: 0 1rem;
+                color:$navText;                
                 font-family: $fuenteTitulo;
-                font-size: 1rem;
+                top: calc(-0vh + 56px + 28px + 1rem);
+                right: calc(-0vw + 12px + 28px + 2rem);
+                border-radius: 50%;
+                transition: 1s; 
+                
+
+                h2{
+                    font-size: 0;
+                    transition: 1s;
+                }
+                
             }
     
             .subItems{
                 display: none;
             }
     
-        }
+        }       
     }
     
-    .itemArticulo{
-        widows: 100vw;
-        height: 100vw;
+    .navShow{
+        background-color: lighten($primarioC,10);
+      /*  height: 100vh;
+        width: 100vw;
+        overflow-y: hidden;
+        z-index: 2;
         position: absolute;
+        @include flex(center,center,column);*/
+        
+        
+        
+        
 
-        h2{            
-            font-size: 2rem;
+        .nav_items_item{            
+            text-align: center;
+            width: 100%;
+           // margin: .5rem;
+            //background: tomato;
+            border-radius: 20px;
+            padding: 20px;            
+           // top: calc(-50vh + 56px + 28px + 1rem);
+            //right: calc(-50vw + 12px + 28px + 2rem);
+            // border-radius: 50%;
+            height: 56px;
+            position: absolute;
+            width: 140px;           
+           @include flex(center,center,column);
+            transition: 1s; 
+            transition-timing-function: ease-out;
+            
+            h2{
+               
+                text-align: center;
+                padding: 0;
+                transition: 1s;
+                font-size: 1rem;
+            }
+            .contenido{
+                display: none;
+            }
+        }
+
+       .nav_items{
+        
+           
+        @for $i from 1 to $opciones {
+            &_item:nth-child(#{$i}){                
+                background-color: red;
+                top: calc(30vh + #{$disOpc}px - 90px * #{$i} + 28px + 1rem);
+                right: calc(50% - 70px); 
+            }
+        }
+       }
+        
+        
+    }
+    
+
+
+
+    .itemContenedor{        
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-color: silver; 
+        right: 0;    
+        @include contenido;
+        z-index: -1;
+        transition: 1s;
+        
+        h2{ 
+            position: absolute;
+            top: -1rem;
+            left: -0rem;
+            font-family: $fuenteTitulo;           
+            font-size: 3rem;
             color: $tituloColor;
+            padding: 0 2rem;
+            margin: 3rem 0;
         }
     }
 }
 
+
+@keyframes movilMovimiento{
+    0%{
+        
+                position: absolute;
+                top: 1rem;
+                right: 2rem;
+                width: 30px;                
+                height: 30px;
+                border-radius: 50%;
+
+                
+    }
+
+    80%{
+       
+                position: relative;
+                top: 0rem;
+                right: 0rem;
+                width: 30px;                
+                height: 30px;
+                border-radius: 50%;
+
+           
+        
+    }
+    100%{
+
+    }
+}
 
 
 .off{

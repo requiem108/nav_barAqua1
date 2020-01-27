@@ -1,0 +1,37 @@
+
+
+.ContenidoOculto{
+    display: none;
+   /* h3{
+        font-size: 2rem;
+        font-family:$fuenteTitulo;
+    }
+    p{
+        
+        font-family:$fuenteTexto;
+    }
+
+    .home{
+        @include flex(center,center,column);
+        padding: 3rem;
+        
+    }*/
+
+}
+ @mixin contenido {
+    
+    h3{
+        font-size: 2rem;
+        font-family:$fuenteTitulo;
+    }
+    p{
+        
+        font-family:$fuenteTexto;
+    }
+
+    .home{
+        @include flex(center,center,column);
+        padding: 3rem;
+        
+    }
+ }
