@@ -4,14 +4,13 @@
 
 
 
-@include media-md{
     .nav{
         height: 100vh;
         width: 100vw;
         overflow-y: hidden;
         z-index: 2;
         position: absolute;
-        @include flex(center,center,column);
+        @include flex(center,flex-end,column);
     
         .toggleBoton{
             color:$navText;
@@ -19,7 +18,7 @@
             background: $primarioC;
             position: fixed;
             right: 0;
-            width: 100px;
+            width: 50px;
             height: 50px;
             border-radius: 50%;
             right:2rem;
@@ -27,25 +26,27 @@
             @include flex(center,center,column);
             cursor: pointer;
             z-index: 100;
+            transition: .4s;
+            font-size: 1.5rem;            
             
         }
         
         &_items{
-            @include flex(center,flex-end,column);
+            @include flex(flex-start,center,column);
             list-style: none;
             
             &_item{
+                text-align: center;
                 color:$navText;                
-                font-family: $fuenteTitulo;
-                top: calc(-0vh + 56px + 28px + 1rem);
-                right: calc(-0vw + 12px + 28px + 2rem);
+                font-family: $fuenteTitulo;                
                 border-radius: 50%;
-                transition: 1s; 
+                width: 100%;
+                opacity: 0;
                 
 
                 h2{
                     font-size: 0;
-                    transition: 1s;
+                    
                 }
                 
             }
@@ -59,63 +60,76 @@
     
     .navShow{
         background-color: lighten($primarioC,10);
-      /*  height: 100vh;
-        width: 100vw;
-        overflow-y: hidden;
-        z-index: 2;
-        position: absolute;
-        @include flex(center,center,column);*/
-        
-        
-        
-        
 
+        .toggleBoton{
+           
+                
+                width: 100vw;
+                height: 100vh;
+                background: #252525;
+                z-index: 0;
+                position: absolute;
+                top: 0;
+                right: 0;
+                margin: 0;
+                opacity: .3;
+                transition: .4s;
+                border-radius: 0;
+                i{
+                    position: fixed;
+                    right: 0;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    right:2rem;
+                    top: 1rem;
+                    @include flex(center,center,column);
+                    cursor: pointer;
+                    z-index: 100;
+                }
+            
+        }
         .nav_items_item{            
             text-align: center;
             width: 100%;
-           // margin: .5rem;
-            //background: tomato;
+            margin: .5rem 0;            
             border-radius: 20px;
-            padding: 20px;            
-           // top: calc(-50vh + 56px + 28px + 1rem);
-            //right: calc(-50vw + 12px + 28px + 2rem);
-            // border-radius: 50%;
+            padding: 20px; 
             height: 56px;
-            position: absolute;
-            width: 140px;           
+            width: 140px;  
+            background: $colorItems;         
            @include flex(center,center,column);
-            transition: 1s; 
+            transform: translateX(calc(-50vw + 70px));
+            opacity: 1;
+            transition: transform .5s, opacity 1s;
+            transition-delay: .1s;
             transition-timing-function: ease-out;
-            
+
             h2{
                
                 text-align: center;
                 padding: 0;
-                transition: 1s;
+                //transition: 1s;
                 font-size: 1rem;
+                padding: 1rem;
             }
             .contenido{
                 display: none;
             }
+           
         }
 
        .nav_items{
         
-           
-        @for $i from 1 to $opciones {
-            &_item:nth-child(#{$i}){                
-                background-color: red;
-                top: calc(30vh + #{$disOpc}px - 90px * #{$i} + 28px + 1rem);
-                right: calc(50% - 70px); 
-            }
-        }
-       }
+        @include flex(center,center,column);
         
-        
+       }   
     }
     
+    .punto{
+        display: none;;
 
-
+    }
 
     .itemContenedor{        
         position: absolute;
@@ -125,7 +139,12 @@
         right: 0;    
         @include contenido;
         z-index: -1;
-        transition: 1s;
+        transition: .5s;
+        top: 0;
+        right: 0;
+        overflow: hidden;
+        transition-timing-function: ease-in;
+        transition-delay: .2s;
         
         h2{ 
             position: absolute;
@@ -134,44 +153,87 @@
             font-family: $fuenteTitulo;           
             font-size: 3rem;
             color: $tituloColor;
-            padding: 0 2rem;
+            padding: 1rem 2rem;
             margin: 3rem 0;
+            transition: .5s;
+            transition-delay: .2s;
         }
     }
-}
+    @include media-md {
 
-
-@keyframes movilMovimiento{
-    0%{
+    .nav{
+        @include flex(flex-start,flex-end,column);
         
-                position: absolute;
-                top: 1rem;
-                right: 2rem;
-                width: 30px;                
-                height: 30px;
-                border-radius: 50%;
-
+        .toggleBoton{
+            display: none;
+        }
+        &_items{
+            @include flex(flex-start,center,row);
+            margin: 1rem 2rem;
+            &_item{
+                display: block;
+                opacity: 1;
+                position: relative;
+                margin: 0 .5rem;
+                background-color: $colorItems;
+                padding: .5rem;
+                border-radius: 10px;
+                transition: all .5s;
                 
+                h2{
+                    display: block;
+                    font-size: 1.5rem;
+                }
+            }
+
+            
+        }
+
+
     }
 
-    80%{
-       
-                position: relative;
-                top: 0rem;
-                right: 0rem;
-                width: 30px;                
-                height: 30px;
-                border-radius: 50%;
+    .itemContenedor{
+        animation:cambioPage 1s;
+        animation-timing-function: ease-in;
+    }
 
-           
-        
+    
+}
+
+@keyframes cambioPage{
+   0%{
+    top: 0vh;
+    right: 0vw;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+   }
+   
+   
+   
+    40%{
+        top: 50vh;
+        right: 50vw;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    70%{
+        top: 50vh;
+        right: 50vw;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
     }
     100%{
-
+        top: 0;
+        right: 0;
     }
 }
 
+  
 
-.off{
-    display: none;
-}
+    .off{
+        display: none;
+    }
+
